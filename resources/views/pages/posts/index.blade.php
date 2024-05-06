@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('All posts') }}
         </h2>
     </x-slot>
 
@@ -13,11 +13,11 @@
                 </div>
             </div>
 
-
+<?php $posts= \App\Models\Post::all();?>
         @if($posts->isNotEmpty())
             @foreach($posts as $post)
                 <br>
-                <a href="{{ route('post.show', ['post' => $post]) }}" class="one-new">
+                <a href="/posts/{{ $post->id }}" class="one-new">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 text-gray-900 flex justify-center">
                         <h2>{{ $post->title }}</h2>
@@ -26,7 +26,7 @@
                 </a>
             @endforeach
         @else
-            <p class="no-categories">{{__('messages.No categories yet')}}</p>
+            <p class="no-categories">{{__('No posts yet')}}</p>
         @endif
         </div>
     </div>
