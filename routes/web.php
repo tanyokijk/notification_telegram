@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect('/posts');
 });
+Route::get('/dashboard', function () {
+    return redirect('/posts');
+})->name('dashboard');
 
 Route::post('/add-post', [PostController::class,'store'])->name('add-post');
 
